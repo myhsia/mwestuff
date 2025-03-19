@@ -1,12 +1,15 @@
-\documentclass[11pt, fontset = fandol, dvipdfmx]{ctexart}
+\documentclass[11pt, fontset = fandol]{ctexart}
 
 \usepackage[hidelinks]{hyperref}
+\usepackage[os=win,hyperrefcolorlinks]{menukeys}
+\usepackage{fontawesome5}
 \usepackage{hologo, fancyhdr, tikz, subcaption,
             twemojis, libertine, inconsolata}
 \usepackage[margin = 1in, headheight = 13.6pt]{geometry}
 \graphicspath{{./figures/}}
 \pagestyle{empty}
 \def\UrlFont{\tt\color{red}}
+\renewmenumacro{\keys}[+]{shadowedroundedkeys}
 \newcommand*\sh \texttt
 \newcommand*\pkg \texttt
 \newcommand*\file \texttt
@@ -24,31 +27,31 @@
 \rfoot{\color{gray}
   Remade by \href{https://github.com/myhsia}{\ttfamily @myhsia}}
 
-\section*{有这么多的截图键\ldots}
+\section*{想截图找找键盘上的\keys{Prt Sc}键！此外还有这么多的截图键\ldots}
 
 \begin{figure}[htbp]
   \begin{subfigure}{.48\linewidth}
     \centering
     \includegraphics[height = .48\linewidth]{macOS}\hspace{-3.33pt}
     \includegraphics[height = .48\linewidth]{Windows}
-    \caption{乔帮主 / 盖茨给你的截图键}
+    \caption{乔帮主/盖茨给你的截图键}
   \end{subfigure}
   \hspace*{\fill}
   \begin{subfigure}{.48\linewidth}
     \centering
     \includegraphics[width = .96\linewidth, height = .48\linewidth]{xbox}
-    \caption{\sh{Win} + \sh{G} 呼出Xbox里的截图键，还能录屏}
+    \caption{\keys{\faIcon{windows}}+\keys{G} 呼出Xbox里的截图键，还能录屏}
   \end{subfigure}
   \begin{subfigure}{.48\linewidth}
     \centering
-    \includegraphics[width = .96\linewidth]{QQ}
-    \caption{化腾给你的截图键}
+    \includegraphics[width = .96\linewidth]{Tencent}
+    \caption{马化腾/张小龙给你的截图键}
   \end{subfigure}
   \hspace*{\fill}
   \begin{subfigure}{.48\linewidth}
     \centering
-    \includegraphics[width = .96\linewidth]{WeChat}
-    \caption{小龙给你的截图键}
+    \includegraphics[width = .96\linewidth]{Ubuntu}
+    \caption{Ubuntu的截图键}
   \end{subfigure}
   \begin{subfigure}{.48\linewidth}
     \centering
