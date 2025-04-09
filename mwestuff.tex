@@ -1,9 +1,9 @@
-\documentclass[11pt, fontset = fandol, svgnames, dvipdfmx]{ctexart}
+\documentclass[11pt, fontset = fandol, svgnames]{ctexart}
 
 \usepackage[hidelinks, colorlinks]{hyperref}
 \usepackage[os = mac]{menukeys}
-\usepackage{fontawesome5, hologo,    fancyhdr,  tikz, subcaption,
-            twemojis,     libertine, inconsolata}
+\usepackage{fontawesome5, fancyhdr, hologo,   
+            subcaption,   twemojis, tikz }
 \usepackage[margin = 1in, headheight = 13.6pt]{geometry}
 \graphicspath{{./figures/}}
 \pagestyle{empty}
@@ -15,20 +15,24 @@
 \let \emph \textbf
 \makeatletter
 \def \HoLogo@CTeX #1{\HOLOGO@mbox {C\TeX}}
-\def \HoLogo@ApLaTeX #1%
-  {\HOLOGO@mbox {A\kern -.05em p\kern -.05em \hologo{LaTeX}}}
 \makeatother
+\protect\renewcommand\faWindows{%
+  \tikz[rounded corners = .1pt, baseline = -.25em]
+    \foreach \i in {0, 90, 180, 270}
+      \fill [ rotate = \i ] (-.4em, .4em) rectangle (-.025em, .025em);
+}
 
 \begin{document}
 
 \pagestyle{fancy} \let \headrule \relax \cfoot{} \lhead{} \rhead{}
-\lfoot{\color{gray} This document is compiled by
-  \href{https://github.com/clerkma/ptex-ng}{\hologo{ApLaTeX}}.}
+\lfoot{\color{gray} This document is compiled by \hologo{XeLaTeX}.}
 \rfoot{\color{gray}
   Remade by \href{https://github.com/myhsia}{\ttfamily @myhsia}}
 
 \section*{想截图找找键盘上的 \keys{Prt Sc} 键！此外还有这么多的截图键\ldots}
 
+\definecolor{qq}{HTML}{0052d9}
+\definecolor{weixin}{HTML}{1AAD19}
 \begin{figure}[htbp]
   \begin{subfigure}{.48\linewidth}
     \centering
@@ -40,40 +44,34 @@
   \begin{subfigure}{.48\linewidth}
     \centering
     \includegraphics[width = .96\linewidth, height = .48\linewidth]{xbox}
-    \caption{\keys{\faIcon{windows}}+\keys{G} 呼出Xbox里的截图键，还能录屏}
+    \caption{\keys{\faWindows}+\keys{G} 呼出Xbox里的截图键，还能录屏}
   \end{subfigure}
   \begin{subfigure}{.48\linewidth}
     \centering
     \tikz
       {
-        \node [inner sep = 0pt] (a)
+        \node [ inner sep = 0pt ] (a)
           {\includegraphics[height = .48\linewidth]{QQ}};
-        \node
-          [ below left, font = \large, DarkBlue,
-          minimum width = 5.5ex, minimum height = 5.5ex,
-            fill = white, rectangle, rounded corners, inner sep = 3pt, 
-          ] at ([shift = {(-3pt,-3pt)}]a.north east) (b) {\faIcon{qq}};
-        \node [ font = \tiny \bfseries \sffamily, below, inner sep = 1.5pt
-              ] at (b.south) {QQ};
+        \node [ minimum width  = 1.65em,   outer sep = 3pt,
+                minimum height = 1.65em,   inner sep = 2pt,
+                fill = qq, below left,     rounded corners
+              ] (b) at (a.north east) {\textcolor{white}\faQq};
       }%
     \tikz
       {
-        \node [inner sep = 0pt] (a)
+        \node [ inner sep = 0pt ] (a)
           {\includegraphics[height = .48\linewidth]{WeChat}};
-        \node
-          [ above right, font = \large, DarkGreen,
-            minimum width = 5.5ex, minimum height = 5.5ex,
-            fill = white, rectangle, rounded corners, inner sep = 3pt, 
-          ] at ([shift = {(3pt,9pt)}]a.south west) (b) {\faIcon{weixin}};
-        \node [ font = \tiny \bfseries \sffamily, below, inner sep = 1.5pt
-              ] at (b.south) {WeChat};
+        \node [ minimum width  = 1.65em,   outer sep = 3pt,
+                minimum height = 1.65em,   inner sep = 2pt,
+                fill = weixin, below left, rounded corners
+              ] (b) at (a.north east) {\textcolor{white}\faWeixin};
       }%
     \caption{马化腾/张小龙给你的截图键}
   \end{subfigure}
   \hspace*{\fill}
   \begin{subfigure}{.48\linewidth}
     \centering
-    \includegraphics[height = .48\linewidth, width = .96\linewidth]{Ubuntu}
+    \includegraphics[height = .48\linewidth, width = .96\linewidth]{Fedora}
     \caption{Ubuntu的截图键}
   \end{subfigure}
   \begin{subfigure}{.48\linewidth}
@@ -95,7 +93,7 @@
   \begin{minipage}{.64\linewidth}
     \tikz
       {
-        \node [ scale = 9.6, inner sep = 0pt ] (sweat) {\twemoji{1f605}};
+        \node [ scale = 9, inner sep = 0pt ] (sweat) {\twemoji{1f605}};
         \node [ right, align = center, scale = 2.4, font = \bfseries ]
           at (sweat.east) {仍然没有学会截图\\ NewBee};
       }
@@ -148,7 +146,7 @@
       \emph{仅保留会出现问题的宏包与文本.}
     \item 从 \verb|\documentclass{}| 开始，到 \verb|\end{document}| 结束.
     \item 效果可截图，但\emph{源代码不要截图！\textcolor{red}{不要拍屏幕！}}%
-      \footnote{Windows / macOS / Ubuntu 等系统均有截图工具. 在交流群中拍屏提问者，
+      \footnote{Windows / macOS / Ubuntu 系统均有截图工具. 在交流群中拍屏提问者，
         管理员有权直接撤回.}
       使潜在的帮助者可以直接复制代码到他们自己编辑器中，编译报同样的错，节省大家的时间.
     \item 代码很长，建议发在 \url{https://pastecode.dev} 再提供链接；代码简短，
