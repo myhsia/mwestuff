@@ -1,9 +1,12 @@
 \documentclass[11pt, fontset = fandol, svgnames]{ctexart}
-
+\usepackage[dvipdfmx]{graphicx}
 \usepackage[hidelinks, colorlinks]{hyperref}
 \usepackage[os = mac]{menukeys}
-\usepackage{fontawesome5, fancyhdr, hologo,   
-            subcaption,   twemojis, tikz }
+\usepackage[mono = false]{libertine}
+\usepackage[scale = .875]{sourcecodepro}
+\usepackage{fancyhdr, hologo, subcaption, twemojis, tikz, shortvrb}
+\MakeShortVerb\| \MakeShortVerb\"
+\usepackage[versionfa = 7, hook]{fontawesomescaled}
 \usepackage[margin = 1in, headheight = 13.6pt]{geometry}
 \graphicspath{{./figures/}}
 \pagestyle{empty}
@@ -25,7 +28,7 @@
 \begin{document}
 
 \pagestyle{fancy} \let \headrule \relax \cfoot{} \lhead{} \rhead{}
-\lfoot{\color{gray} This document is compiled by \hologo{XeLaTeX}.}
+\lfoot{\color{gray} This document is compiled by A\kern-.05emp\kern -.05em\LaTeX.}
 \rfoot{\color{gray}
   Remade by \href{https://github.com/myhsia}{\ttfamily @myhsia}}
 
@@ -36,14 +39,14 @@
 \begin{figure}[htbp]
   \begin{subfigure}{.48\linewidth}
     \centering
-    \includegraphics[height = .48\linewidth]{macOS}%
-    \includegraphics[height = .48\linewidth]{Windows}
+    \includegraphics[height = .48\linewidth]{macOS.pdf}%
+    \includegraphics[height = .48\linewidth]{Windows.pdf}
     \caption{乔帮主/盖茨给你的截图键}
   \end{subfigure}
   \hspace*{\fill}
   \begin{subfigure}{.48\linewidth}
     \centering
-    \includegraphics[width = .96\linewidth, height = .48\linewidth]{xbox}
+    \includegraphics[width = .96\linewidth, height = .48\linewidth]{xbox.pdf}
     \caption{\keys{\faWindows}+\keys{G} 呼出Xbox里的截图键，还能录屏}
   \end{subfigure}
   \begin{subfigure}{.48\linewidth}
@@ -51,7 +54,7 @@
     \tikz
       {
         \node [ inner sep = 0pt ] (a)
-          {\includegraphics[height = .48\linewidth]{QQ}};
+          {\includegraphics[height = .48\linewidth]{QQ.pdf}};
         \node [ minimum width  = 1.65em,   outer sep = 3pt,
                 minimum height = 1.65em,   inner sep = 2pt,
                 fill = qq, below left,     rounded corners
@@ -60,7 +63,7 @@
     \tikz
       {
         \node [ inner sep = 0pt ] (a)
-          {\includegraphics[height = .48\linewidth]{WeChat}};
+          {\includegraphics[height = .48\linewidth]{WeChat.pdf}};
         \node [ minimum width  = 1.65em,   outer sep = 3pt,
                 minimum height = 1.65em,   inner sep = 2pt,
                 fill = weixin, below left, rounded corners
@@ -71,18 +74,18 @@
   \hspace*{\fill}
   \begin{subfigure}{.48\linewidth}
     \centering
-    \includegraphics[height = .48\linewidth, width = .96\linewidth]{Fedora}
+    \includegraphics[height = .48\linewidth, width = .96\linewidth]{Fedora.pdf}
     \caption{Ubuntu的截图键}
   \end{subfigure}
   \begin{subfigure}{.48\linewidth}
     \centering
-    \includegraphics[width = .96\linewidth]{Edge}
+    \includegraphics[width = .96\linewidth]{Edge.pdf}
     \caption{Edge 自带的截图键}
   \end{subfigure}
   \hspace*{\fill}
   \begin{subfigure}{.48\linewidth}
     \centering
-    \includegraphics[width = .96\linewidth]{Office}
+    \includegraphics[width = .96\linewidth]{Office.pdf}
     \caption{Office 自带的截图键[请顺带卸载你的 WPS]}
   \end{subfigure}
 \end{figure}
@@ -93,9 +96,9 @@
   \begin{minipage}{.64\linewidth}
     \tikz
       {
-        \node [ scale = 9, inner sep = 0pt ] (sweat) {\twemoji{1f605}};
+        \node [ scale = 9, inner sep = 0pt ] (red) {\twemoji{1f605}};
         \node [ right, align = center, scale = 2.4, font = \bfseries ]
-          at (sweat.east) {仍然没有学会截图\\ NewBee};
+          at (red.east) {仍然没有学会截图\\\textsf{NewBee.pdf}};
       }
     \centering
     右图这种\emph{伤害群友视力}的行为，管理员见后直接撤回.
@@ -105,13 +108,13 @@
   \hspace*{\fill}
   \begin{minipage}{.32\linewidth}
     \raggedleft
-    \includegraphics[height = .9\linewidth]{photo}
+    \includegraphics[height = .9\linewidth]{photo.jpg}
   \end{minipage}
 \end{center}
 
 \newpage
 
-\section*{\hologo{LaTeX} 交流提问的艺术：从学会制作 MWE 开始}
+\section*{\LaTeX\ 交流提问的艺术：从学会制作 MWE 开始}
 
 编译出错，效果不满意，想得到有针对性地帮助，请提供\emph{最小工作示例代码}%
 （\emph Minimal \emph Working \emph Example, \emph{MWE}），
@@ -119,11 +122,14 @@
 \begin{enumerate}
   \item 你使用的\emph{操作系统}（Windows 7/10/11，macOS，Ubuntu，Deepin 等）.
   \item 安装的\emph{发行版}
-    （\hologo{TeX} Live 2025，Mac\hologo{TeX}，
-      \hologo{MiKTeX}，\hologo{CTeX}%
-      \footnote{如果没有特殊需求，禁止使用 \hologo{CTeX} 套装，
-        它已经完成了历史使命，请换用现代的 \hologo{LaTeX} 发行版.
-      } 套装）.
+    （\TeX~Live 2025，Mac\TeX，
+      \hologo{MiKTeX}，\hologo{CTeX} 套装%
+      \footnote{
+        某些国内中文期刊的投稿模板使用的是 CCT，\TeX~Live 似乎并不兼容.
+        为快速上手完成投稿，这种情况下建议初学者使用 \hologo{CTeX} 套装.
+        如果没有特殊需求，禁止使用 \hologo{CTeX} 套装，
+        它已经完成了历史使命，请换用现代的 \LaTeX\ 发行版.
+      }）.
   \item 你使用的\emph{编辑器}
     （TeXstudio，Visual Studio Code，WinEdt，TeXshop，Overleaf）.
   \item 你执行的\emph{编译命令}
@@ -144,7 +150,7 @@
     \item 提供的代码需要复现你的问题，不要发一套代码，说另一套效果.
     \item 删除所有与问题无关的宏包引入命令，与问题无关的冗长代码，
       \emph{仅保留会出现问题的宏包与文本.}
-    \item 从 \verb|\documentclass{}| 开始，到 \verb|\end{document}| 结束.
+    \item 从 |\documentclass{}| 开始，到 |\end{document}| 结束.
     \item 效果可截图，但\emph{源代码不要截图！\textcolor{red}{不要拍屏幕！}}%
       \footnote{Windows / macOS / Ubuntu 系统均有截图工具. 在交流群中拍屏提问者，
         管理员有权直接撤回.}
@@ -155,7 +161,7 @@
   \item 如实现某种需求，请\emph{明确}提供该需求的\emph{来源}，
     需求的必要环境（如要使用在列表环境内，必须使用 \file{xelatex} 编译等等）.
   \item 可以截图提供错误信息，奇怪的输出效果，可以通过 PS 等手段制作出你想要实现的效果图.
-  \item 如果使用\emph{模板}。请提供模板文件（\file{.cls}，\file{.sty}），
+  \item 如果使用\emph{模板}，请提供模板文件（\file{.cls}，\file{.sty}），
     或提供模板文件的获取方式.
   \item 一般更建议将以上信息发布到论坛%
     \footnote{如 \url{https://ask.latexstudio.net},
