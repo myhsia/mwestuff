@@ -1,5 +1,5 @@
-\documentclass[11pt, fontset = fandol, svgnames]{ctexart}
-\usepackage[dvipdfmx]{graphicx}
+\documentclass[dvipdfmx, 11pt, fontset = lxgw, svgnames]{ctexart}
+\usepackage{graphicx}
 \usepackage[hidelinks, colorlinks]{hyperref}
 \usepackage[os = mac]{menukeys}
 \usepackage[mono = false]{libertine}
@@ -17,7 +17,6 @@
 \newcommand*\file \texttt
 \let \emph \textbf
 \makeatletter
-\def \HoLogo@CTeX #1{\HOLOGO@mbox {C\TeX}}
 \makeatother
 \protect\renewcommand\faWindows{%
   \tikz[rounded corners = .1pt, baseline = -.25em]
@@ -28,7 +27,7 @@
 \begin{document}
 
 \pagestyle{fancy} \let \headrule \relax \cfoot{} \lhead{} \rhead{}
-\lfoot{\color{gray} This document is compiled by A\kern-.05emp\kern -.05em\LaTeX.}
+\lfoot{\color{gray} This document is compiled by \hologo{upLaTeX}.}
 \rfoot{\color{gray}
   Remade by \href{https://github.com/myhsia}{\ttfamily @myhsia}}
 
@@ -105,9 +104,9 @@
 
     建议意识到后\emph{主动撤回}.
   \end{minipage}
-  \hspace*{\fill}
+  \hfill
   \begin{minipage}{.32\linewidth}
-    \raggedleft
+    % \raggedleft
     \includegraphics[height = .9\linewidth]{photo.jpg}
   \end{minipage}
 \end{center}
@@ -123,11 +122,11 @@
   \item 你使用的\emph{操作系统}（Windows 7/10/11，macOS，Ubuntu，Deepin 等）.
   \item 安装的\emph{发行版}
     （\TeX~Live 2025，Mac\TeX，
-      \hologo{MiKTeX}，\hologo{CTeX} 套装%
+      \hologo{MiKTeX}，\CTeX\ 套装%
       \footnote{
         某些国内中文期刊的投稿模板使用的是 CCT，\TeX~Live 似乎并不兼容.
-        为快速上手完成投稿，这种情况下建议初学者使用 \hologo{CTeX} 套装.
-        如果没有特殊需求，禁止使用 \hologo{CTeX} 套装，
+        为快速上手完成投稿，这种情况下建议初学者使用 \CTeX\ 套装.
+        如果没有特殊需求，禁止使用 \CTeX\ 套装，
         它已经完成了历史使命，请换用现代的 \LaTeX\ 发行版.
       }）.
   \item 你使用的\emph{编辑器}
